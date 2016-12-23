@@ -48,3 +48,21 @@ func (neo4jMovieService *neo4jMovieService) getMovieById(id string) (Movie, erro
 
 func (neo4jMovieService *neo4jMovieService) add(movie Movie) {
 }
+
+func (neo4jMovieService *neo4jMovieService) getActorsForMovie(id string) ([]Actor, error) {
+	db, err := neoism.Connect("http://neo4j:david@localhost:7474/db/data")
+	if (err != nil) {
+		log.Fatalf("Cannot connect to DB: [%v]", err)
+	}
+
+	var actors []Actor
+	cypherQuery := neoism.CypherQuery{
+		Statement:`match(movie:Movie {Id:{id}}) match((actor:Actor)-[r:ACTS_IN]->(movie)) return actor.Name`,
+		Parameters:neoism.Props{"id":id},
+		Result: &actors,
+	}
+
+	db.Cypher(&cypherQuery)
+
+	return actors, nil
+}

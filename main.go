@@ -33,6 +33,7 @@ func listen(port int) {
 	http.HandleFunc("/display-all", displayAll)
 	http.HandleFunc("/movies/", getById)
 	http.HandleFunc("/add-movie", addMovie)
+	http.HandleFunc("/actors/", displayActorsForMovie)
 
 	err := http.ListenAndServe(":" + strconv.Itoa(port), nil)
 	if err != nil {

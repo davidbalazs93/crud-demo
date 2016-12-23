@@ -58,3 +58,30 @@ func addMovie(w http.ResponseWriter, r *http.Request) {
 	movieService := neo4jMovieService{}
 	movieService.add(newMovie)
 }
+
+func displayActorsForMovie(w http.ResponseWriter, r *http.Request) {
+	log.Print("Received request to get actors for a movie")
+	if (len(r.URL.Path) < 8) {
+		log.Print("The url path is too short. It does not contain the movie id.")
+		w.Write([]byte("Provide a movie id."))
+		return
+	}
+
+	movieId := r.URL.Path[8:]
+	log.Printf("Retrieving actors for movie with id: [%s]", movieId)
+	movieService := neo4jMovieService{}
+	actors, err := movieService.getActorsForMovie(movieId)
+
+	if (err != nil) {
+		log.Printf("Error while fetching actors for movie: [%v]", err)
+	}
+
+	actorsJSON, err := json.Marshal(actors)
+
+	if (err != nil) {
+		log.Fatalf("Cannot marshal actors [%v]", err)
+	}
+
+	log.Printf("Retrieving actors: %s", actorsJSON)
+	w.Write(actorsJSON)
+}
