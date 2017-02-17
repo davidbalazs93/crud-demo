@@ -41,6 +41,26 @@ The purpose of this service is to serve the functionality of aggregating healthc
     - params:
        - `categories` - the healthcheck will be performed on the services belonging to the provided categories.
        - `cache` - if set to false, the healthchecks will be performed without the help of cache. By default, the cache is used.
+ * `__pods-health` - Perform pods healthcheck for a service.
+    - params:
+       - `service-name` - The healthcheck will be performed only for pods belonging to the provided service.
+ * `__pod-individual-health` - Retrieves the healthchecks of the app running inside the pod.
+    - params:
+       - `pod-name` - The name of the pod for which the healthchecks will be retrieved.
+ * `add-ack` - (POST) Acknowledges a service
+    - params:
+       - `service-name` - The service to be acknowledged.
+    - request body:
+       - 'ack-msg' the acknowledge message.
+ * `rem-ack` - Removes the acknowledge of a service
+    - params:
+       - `service-name` - The service to be updated.
+ * `enable-category` - Enables a category. This is used for sticky categories which are unhealthy.
+    - params:
+       - `category-name` - The category to be enabled.
+ * `disable-category` - Disables a category. This is useful when doing a failover.
+    - params:
+       - `category-name` - The category to be disabled.
 
 ### Admin endpoints
  * `__health` -
