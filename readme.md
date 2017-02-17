@@ -40,7 +40,8 @@ The purpose of this service is to serve the functionality of aggregating healthc
  * `__health` - Perform services healthcheck.
     - params:
        - `categories` - the healthcheck will be performed on the services belonging to the provided categories.
-       - `cache` - if set to false, the healthchecks will be performed without the help of cache. By default, the cache is used.
+       - `cache` - if set to false, the healthchecks will be performed without the help of cache. By default, the cache is used.`
+
 ### Admin endpoints
  * `__health` -
  * `__gtg`
