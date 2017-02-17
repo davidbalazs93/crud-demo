@@ -33,8 +33,9 @@ The purpose of this service is to serve the functionality of aggregating healthc
 ## Endpoints
  In the following section, aggregate-healthcheck endpoints are described.
  Note that this app has two options of retrieving healthchecks:
-  - `JSON format` - to get the results in JSON format, provide the ``"Accept: application/json"` header
+  - `JSON format` - to get the results in JSON format, provide the `"Accept: application/json"` header
   - `HTML format` - this is the default format of displaying healthchecks.
+
 ### Service endpoints
  * `__health` - Perform services healthcheck.
     - params:
