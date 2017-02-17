@@ -8,13 +8,17 @@ The purpose of this service is to serve the functionality of aggregating healthc
  there is a readinessProbe configured on each of them,  which checks the GoodToGo endpoint of the app running inside the pod. If the GoodToGo responds
  with a 503 Service Unavailable status code, the pod will not serve requests anymore, until it will receive 200 OK status code on GoodToGo endpoint.
 
-  For a service, if there is at least one pod that can serve requests, the service will be considered healthy, but if there are pods that are unavailable, 
-  a message will be displayed in the "Output" section of the corresponding service.
+ For a service, if there is at least one pod that can serve requests, the service will be considered healthy, but if there are pods that are unavailable,
+ a message will be displayed in the "Output" section of the corresponding service.
+
+ Not that for services are grouped into categories, therefore there is the possibility to query the aggregate-healthcheck only for a certain list of categories.
+ If no category is provided, the healthchecks of all services will be displayed.
+ 
 ### Get pods health for a service
  Pods health is evaluated by querying the health endpoint of apps inside the pods. Given a pod, if there is at least one check that fails,
   the pod health will be considered warning or critical, based on the severity level of the check that fails.
 ### Acknowledge a service
- When a service is unhealthy, there is a possibility to acknowledge the warning. By acknowledging all the services that are unhealthy, 
+ When a service is unhealthy, there is a possibility to acknowledge the warning. By acknowledging all the services that are unhealthy,
  the general status of the aggregate-healthcheck will become healthy (it will also mention that there are 'n' services acknowledged).
 ### Sticky categories
  Categories can be sticky, meaning that if one of the services become unhealthy, the category will be disabled, meaning that it will be unhealthy,
