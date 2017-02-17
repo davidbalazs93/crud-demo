@@ -35,14 +35,14 @@ The purpose of this service is to serve the functionality of aggregating healthc
 ### Service endpoints
  * `__health` -
     - params:
-       `categories` - the healthcheck will be performed on the services belonging to the provided categories.
-       `cache` - if set to false, the healthchecks will be performed without the help of cache. By default, the cache is used.
+       - `categories` - the healthcheck will be performed on the services belonging to the provided categories.
+       - `cache` - if set to false, the healthchecks will be performed without the help of cache. By default, the cache is used.
 ### Admin endpoints
  * `__health` -
  * `__gtg`
     - params:
-           `categories` - the healthcheck will be performed on the services belonging to the provided categories.
-           `cache` - if set to false, the healthchecks will be performed without the help of cache. By default, the cache is used.
+       - `categories` - the healthcheck will be performed on the services belonging to the provided categories.
+       - `cache` - if set to false, the healthchecks will be performed without the help of cache. By default, the cache is used.
     - returns a __503 Service Unavailable__ status code in the following cases:
        - if at least one of the provided categories is disabled (see sticky functionality)
        - if at least one of the checked services is unhealthy
