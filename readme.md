@@ -31,9 +31,12 @@ The purpose of this service is to serve the functionality of aggregating healthc
   * Enable/Disable sticky categories
 
 ## Endpoints
-
+ In the following section, aggregate-healthcheck endpoints are described.
+ Note that this app has two options of retrieving healthchecks:
+  - `JSON format` - to get the results in JSON format, provide the ``"Accept: application/json"` header
+  - `HTML format` - this is the default format of displaying healthchecks.
 ### Service endpoints
- * `__health` -
+ * `__health` - Perform services healthcheck.
     - params:
        - `categories` - the healthcheck will be performed on the services belonging to the provided categories.
        - `cache` - if set to false, the healthchecks will be performed without the help of cache. By default, the cache is used.
