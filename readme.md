@@ -11,4 +11,4 @@ Aggregate healthcheck that is currently used for Kubernetes cluster
 
 ### Admin endpoints
  * __health
- * __gtg
+ * __gtg - returns a __200__ status code if 
