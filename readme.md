@@ -51,7 +51,7 @@ The purpose of this service is to serve the functionality of aggregating healthc
     - params:
        - `service-name` - The service to be acknowledged.
     - request body:
-       - 'ack-msg' the acknowledge message.
+       - `ack-msg` the acknowledge message.
  * `rem-ack` - Removes the acknowledge of a service
     - params:
        - `service-name` - The service to be updated.
@@ -63,7 +63,7 @@ The purpose of this service is to serve the functionality of aggregating healthc
        - `category-name` - The category to be disabled.
 
 ### Admin endpoints
- * `__health` -
+ * `__health`
  * `__gtg`
     - params:
        - `categories` - the healthcheck will be performed on the services belonging to the provided categories.
