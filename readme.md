@@ -1,10 +1,13 @@
 # upp-aggregate-healthcheck
-Aggregate healthcheck that is currently used for Kubernetes cluster
+The purpose of this service is to serve the functionality of aggregating healthchecks from services and pods in the Kubernetes cluster.
 
 ## Usage
 
 ## Running locally
-
+ There is a limited number of functionalities that can be used locally, because we are querying all the apps, inside the pods and there is no current solution of accessing them outside of the cluster, without using port-forwarding.
+ The list of functionalities that can be used outside of the cluster are: 
+  * Add/Remove acknowledge
+  * Enable/Disable sticky categories
 ## Endpoints
 
 ### Service endpoints
@@ -12,6 +15,7 @@ Aggregate healthcheck that is currently used for Kubernetes cluster
 ### Admin endpoints
  * `__health` -
  * `__gtg` 
+    - params: 
     - returns a __503 Service Unavailable__ status code in the following cases:
        - if at least one of the provided categories is disabled (see sticky functionality)
        - if at least one of the checked services is unhealthy
