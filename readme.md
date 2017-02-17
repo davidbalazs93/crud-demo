@@ -13,7 +13,7 @@ The purpose of this service is to serve the functionality of aggregating healthc
 
  Not that for services are grouped into categories, therefore there is the possibility to query the aggregate-healthcheck only for a certain list of categories.
  If no category is provided, the healthchecks of all services will be displayed.
- 
+
 ### Get pods health for a service
  Pods health is evaluated by querying the health endpoint of apps inside the pods. Given a pod, if there is at least one check that fails,
   the pod health will be considered warning or critical, based on the severity level of the check that fails.
@@ -33,11 +33,16 @@ The purpose of this service is to serve the functionality of aggregating healthc
 ## Endpoints
 
 ### Service endpoints
-
+ * `__health` -
+    - params:
+       `categories` - the healthcheck will be performed on the services belonging to the provided categories.
+       `cache` - if set to false, the healthchecks will be performed without the help of cache. By default, the cache is used.
 ### Admin endpoints
  * `__health` -
  * `__gtg`
     - params:
+           `categories` - the healthcheck will be performed on the services belonging to the provided categories.
+           `cache` - if set to false, the healthchecks will be performed without the help of cache. By default, the cache is used.
     - returns a __503 Service Unavailable__ status code in the following cases:
        - if at least one of the provided categories is disabled (see sticky functionality)
        - if at least one of the checked services is unhealthy
